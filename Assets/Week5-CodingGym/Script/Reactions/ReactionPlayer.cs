@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+public class ReactionPlayer : MonoBehaviour
 {
     public float speed = 5f;
     public float offset;
@@ -30,13 +29,13 @@ public class PlayerMovement : MonoBehaviour
         PlayerMove();
         StayInScreen(pos);
 
-        if(reachNPC(pos, npcPos))
+        if (reachNPC(pos, npcPos))
         {
             if (canChosseReaction == false)
             {
-                canChosseReaction =true ;
+                canChosseReaction = true;
                 chooseReaction();
-            }         
+            }
             canvas.SetActive(true);
         } else
         {
@@ -52,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, Input.GetAxis("Vertical") * speed * Time.deltaTime, 0);
 
-      
+
     }
 
     void StayInScreen(Vector2 pos)
@@ -60,10 +59,10 @@ public class PlayerMovement : MonoBehaviour
         //check boundary
         Vector2 posInScreen = Camera.main.WorldToScreenPoint(pos);
 
-        if(posInScreen.x > Screen.width)
+        if (posInScreen.x > Screen.width)
         {
             Vector2 fixedPos = new Vector2(Screen.width, 0);
-            pos.x = Camera.main.ScreenToWorldPoint(fixedPos).x;  
+            pos.x = Camera.main.ScreenToWorldPoint(fixedPos).x;
             transform.position = pos;
         }
         if (posInScreen.x < 0)
@@ -88,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    bool reachNPC(Vector2 pos , Vector2 npcPoss)
+    bool reachNPC(Vector2 pos, Vector2 npcPoss)
     {
         if (pos.x < npcPoss.x + offset && pos.x > npcPoss.x - offset && pos.y > npcPoss.y - offset && pos.y < npcPoss.y + offset)
         {
@@ -101,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
     void chooseReaction()
     {
-            reactionSprite.sprite = reactions[Random.Range(0, reactions.Length)];          
+        reactionSprite.sprite = reactions[Random.Range(0, reactions.Length)];
     }
 
 }
