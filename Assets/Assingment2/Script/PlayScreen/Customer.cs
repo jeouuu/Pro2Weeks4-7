@@ -14,6 +14,7 @@ public class Customer : MonoBehaviour
 
     public GameObject orderUI;
 
+
     private void Start()
     {        
         speed = Random.Range(0.1f, 0.5f);
@@ -53,5 +54,5 @@ public class Customer : MonoBehaviour
             orderUI.SetActive(true);
         }
     }
-
+   
 }

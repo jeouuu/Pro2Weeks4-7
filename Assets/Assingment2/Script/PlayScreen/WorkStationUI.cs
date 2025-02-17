@@ -46,7 +46,7 @@ public class WorkStationUI : MonoBehaviour
 
     }
 
-    void OpenWorkUI()
+    void MiniGame()
     {
         
     }
