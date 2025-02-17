@@ -150,7 +150,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -1570165683, guid: 89af9e8444f0110408c491d12199f089, type: 3}
+  m_Sprite: {fileID: -989766130, guid: 305265eaaa5d5ff459bf70242526fb48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -199,11 +199,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  seats:
-  - {x: -4.96, y: -4.85}
-  - {x: -1.74, y: -4.85}
-  - {x: 1.54, y: -4.85}
-  - {x: 4.82, y: -4.85}
   orderUI: {fileID: 7440345454536618770}
 --- !u!1 &7440345454536618770
 GameObject:

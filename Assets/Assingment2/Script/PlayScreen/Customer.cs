@@ -9,17 +9,15 @@ public class Customer : MonoBehaviour
     public AnimationCurve moveCurve;
 
     Vector2 startPos;
-    public Vector2[] seats = new Vector2[4];
-    Vector2 pickSeat;
+    Vector2 assignSeat;
+    private CustomerSpawner spawner;
 
     public GameObject orderUI;
 
     private void Start()
-    {
-        pickSeat = seats[Random.Range(0, seats.Length)];
+    {        
         speed = Random.Range(0.1f, 0.5f);
         startPos = transform.position;
-
         orderUI.SetActive(false);
     }
 
@@ -29,18 +27,23 @@ public class Customer : MonoBehaviour
         Order();
     }
 
+    public void AssignSeat(Vector2 seat)
+    {
+        assignSeat = seat;
+    }
+
     void CustomerMove()
     {
-        //incriment the time, when it reach 1(which is the left edge) set it back to 0 (right edge).     
+        //incriment the time, when it reach 1 stay at 1, so it stop moving   
         t += Time.deltaTime * speed;
         if (t > 1)
         {
             t = 1;
 
         }
-
+       
         //use vector2 lerp to do the movement
-        transform.position = Vector2.Lerp(startPos, pickSeat, moveCurve.Evaluate(t));
+        transform.position = Vector2.Lerp(startPos, assignSeat, moveCurve.Evaluate(t));
     }
 
     void Order()
