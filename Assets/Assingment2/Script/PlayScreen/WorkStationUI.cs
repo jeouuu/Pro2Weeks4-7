@@ -20,6 +20,10 @@ public class WorkStationUI : MonoBehaviour
         if (reachStation())
         {
             workStationUI.SetActive(true);
+            if (reachStation() && Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log("miniGame");
+            }
         } else
         {
             workStationUI.SetActive(false);
@@ -40,6 +44,11 @@ public class WorkStationUI : MonoBehaviour
             return false;
         }
 
+    }
+
+    void OpenWorkUI()
+    {
+        
     }
 
 }
