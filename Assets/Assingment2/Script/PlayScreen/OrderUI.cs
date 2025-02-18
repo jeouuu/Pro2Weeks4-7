@@ -11,6 +11,9 @@ public class OrderUI : MonoBehaviour
     public GameObject orderTakenUI;
     public Button orderButton;
 
+    public Sprite[] foodSprites;
+    public Image foodImage;
+
     
 
     private void Start()
@@ -20,10 +23,9 @@ public class OrderUI : MonoBehaviour
 
     public void PickFood()
     {
-
+        foodImage.sprite = foodSprites[Random.Range(0,foodSprites.Length)];
     }
         
-
     public void ShowUI()
     {
         orderTakenUI.SetActive(true);

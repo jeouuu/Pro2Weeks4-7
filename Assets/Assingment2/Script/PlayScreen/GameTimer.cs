@@ -11,6 +11,7 @@ public class GameTimer : MonoBehaviour
 
     public GameObject startUI;
     public GameObject playUI;
+    public GameObject endUI;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class GameTimer : MonoBehaviour
     {
         Appear();
         StartGame();
-
+        EndGame();
     }
 
     void Appear()
@@ -48,6 +49,14 @@ public class GameTimer : MonoBehaviour
         {
             t += Time.deltaTime * timerSpeed;
             gameTimer.value = t;
+        }
+    }
+
+    void EndGame()
+    {
+        if(gameTimer.value == gameTimer.maxValue)
+        {
+            endUI.SetActive(true );
         }
     }
 

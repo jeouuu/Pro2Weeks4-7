@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Customer : MonoBehaviour
 {
     public float speed;
-    [Range(0, 1)] public float t = 0;
+    [Range(0, 1)] public float tWalkIn = 0;
+    [Range(0, 1)] public float tWalkOut = 0;
     public AnimationCurve moveCurve;
 
     Vector2 startPos;
@@ -14,7 +16,12 @@ public class Customer : MonoBehaviour
 
     public GameObject orderUI;
 
-
+    public float waitTime;
+    public Vector2 leaveScreen;
+    public Sprite madReaction;
+    public Image reactionImage;
+    bool canLeave = false;
+    bool canDestroy = false;
 
     private void Start()
     {        
@@ -27,6 +34,7 @@ public class Customer : MonoBehaviour
     {
         CustomerMove();
         Order();
+        Leave();
     }
 
     public void AssignSeat(Vector2 seat)
@@ -37,23 +45,52 @@ public class Customer : MonoBehaviour
     void CustomerMove()
     {
         //incriment the time, when it reach 1 stay at 1, so it stop moving   
-        t += Time.deltaTime * speed;
-        if (t > 1)
+        tWalkIn += Time.deltaTime * speed;
+        if (tWalkIn > 1)
         {
-            t = 1;
-
+            tWalkIn = 1;
         }
        
         //use vector2 lerp to do the movement
-        transform.position = Vector2.Lerp(startPos, assignSeat, moveCurve.Evaluate(t));
+        transform.position = Vector2.Lerp(startPos, assignSeat, moveCurve.Evaluate(tWalkIn));
     }
 
     void Order()
     {
-        if(t == 1)
+        if(tWalkIn == 1)
         {
             orderUI.SetActive(true);
         }
     }
-   
+
+    void Leave()
+    {
+        if(tWalkIn == 1)
+        {
+            waitTime += Time.deltaTime;
+
+            if(waitTime > 6)
+            {
+                reactionImage.sprite = madReaction;
+                canLeave = true;
+            }
+        }
+
+        if (canLeave)
+        {
+            tWalkOut += Time.deltaTime * speed;
+            if (tWalkOut > 1)
+            {
+                tWalkOut = 1;
+                canDestroy = true;
+            }
+            Vector2 currentPos = transform.position;
+            transform.position = Vector2.Lerp(currentPos,leaveScreen, moveCurve.Evaluate(tWalkOut));
+        }
+
+        if (canDestroy)
+        {   
+            Destroy(gameObject);           
+        }
+    }   
 }

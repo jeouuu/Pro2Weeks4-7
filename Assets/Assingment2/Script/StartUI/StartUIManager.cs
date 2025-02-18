@@ -20,11 +20,13 @@ public class StartUIManager : MonoBehaviour
 
     public void ChooseChef(int index)
     {
+        //change the chefImage on screen depends on the one player choose from the dropdown
         chefImage.sprite = chefOption.options[index].image;
     }
 
     public void ButtonPlay()
     {
+        //when the play button is pressed, disable the start ui screen --> enter the play screen
         startUIScreen.SetActive(false);
     }
 }

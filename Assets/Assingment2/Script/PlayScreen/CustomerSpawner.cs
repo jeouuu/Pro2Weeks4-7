@@ -37,7 +37,7 @@ public class CustomerSpawner : MonoBehaviour
     void SpawnCustomer()
     {
         //if there's less than 4 customers AND there's available seats
-        if(customers.Count < 4 && availableSeats.Count>0)
+        while(customers.Count < 4 && availableSeats.Count>0)
         {
             Vector2 pickSeat = availableSeats[Random.Range(0, customers.Count)];    
             availableSeats.Remove(pickSeat);
@@ -48,8 +48,15 @@ public class CustomerSpawner : MonoBehaviour
             { 
                 script.AssignSeat(pickSeat);
             }
-
             customers.Add(newCustomer);
+         
+            //if (script.removeCustomer)
+            //{   
+            //    Debug.Log("remve");
+            //    customers.Remove(newCustomer);
+            //}
+            
+
         }
         
     }

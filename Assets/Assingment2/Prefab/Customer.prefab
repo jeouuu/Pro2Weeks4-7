@@ -122,6 +122,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6487753067766313741}
         m_TargetAssemblyTypeName: OrderUI, Assembly-CSharp
+        m_MethodName: PickFood
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6487753067766313741}
+        m_TargetAssemblyTypeName: OrderUI, Assembly-CSharp
         m_MethodName: ShowUI
         m_Mode: 1
         m_Arguments:
@@ -144,6 +156,81 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &3706240983626141612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4605935681208700182}
+  - component: {fileID: 156607800496731312}
+  - component: {fileID: 2211700926220218875}
+  m_Layer: 5
+  m_Name: OrderFood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4605935681208700182
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706240983626141612}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3246090091297550804}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000005722, y: 0.0000028387}
+  m_SizeDelta: {x: 52.5017, y: 52.5022}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &156607800496731312
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706240983626141612}
+  m_CullTransparentMesh: 1
+--- !u!114 &2211700926220218875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706240983626141612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -887230987, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3790886854636261666
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +484,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_Sprite: {fileID: -989766130, guid: 305265eaaa5d5ff459bf70242526fb48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -422,7 +509,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.2
-  t: 0
+  tWalkIn: 0
+  tWalkOut: 0
   moveCurve:
     serializedVersion: 2
     m_Curve:
@@ -447,7 +535,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  removeCustomer: 0
   orderUI: {fileID: 7440345454536618770}
+  waitTime: 0
+  leaveScreen: {x: 11, y: -5}
+  madReaction: {fileID: 21300000, guid: 3842729797771574e957e7ce1eb05a4d, type: 3}
+  reactionImage: {fileID: 1163003109306414194}
 --- !u!114 &6487753067766313741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,6 +556,33 @@ MonoBehaviour:
   orderUI: {fileID: 7440345454536618770}
   orderTakenUI: {fileID: 3790886854636261666}
   orderButton: {fileID: 3568407102319938130}
+  foodSprites:
+  - {fileID: -887230987, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: 238154688, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: -138209937, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: -679358172, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: -1048973536, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: 1491619036, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: 908232216, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: 1924100185, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: -993620502, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: -1259242931, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: 940300221, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: 11452861, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: 1326287347, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: -1347393710, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: 1562460632, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: -1492256074, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: -2045265966, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: -1794797048, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: 1723217373, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: 1478117742, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: -1649698451, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: 248764472, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: 673590462, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: -2105000202, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  - {fileID: -838893399, guid: 529af4bdebfb57844ac40648c60dbc05, type: 3}
+  foodImage: {fileID: 2211700926220218875}
 --- !u!1 &7440345454536618770
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +717,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7800497106857013196}
+  - {fileID: 4605935681208700182}
   m_Father: {fileID: 951264183892004124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -625,7 +746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8962264, g: 0.5910611, b: 0.48616055, a: 1}
+  m_Color: {r: 0.8113208, g: 0.6435895, b: 0.5855287, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
