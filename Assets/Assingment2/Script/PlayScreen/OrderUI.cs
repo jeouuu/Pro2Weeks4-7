@@ -11,19 +11,23 @@ public class OrderUI : MonoBehaviour
     public GameObject orderTakenUI;
     public Button orderButton;
 
-    bool orderTaken = false;
+    
 
     private void Start()
     {
-        orderTakenUI.SetActive(false);
-       
+        orderTakenUI.SetActive(false);       
     }
+
+    public void PickFood()
+    {
+
+    }
+        
 
     public void ShowUI()
     {
         orderTakenUI.SetActive(true);
-        orderUI.SetActive(false);
-        orderTaken = true;
+        orderUI.SetActive(false);        
     }
 
 

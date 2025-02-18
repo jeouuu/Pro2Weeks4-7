@@ -10,6 +10,8 @@ public class WorkStationUI : MonoBehaviour
 
     public Vector3 reachStationOffset = new Vector3(1,1,0);
 
+    public GameObject serveFoodUI;
+
     private void Start()
     {
         workStationUI.SetActive(false);
@@ -20,11 +22,13 @@ public class WorkStationUI : MonoBehaviour
         if (reachStation())
         {
             workStationUI.SetActive(true);
+
             if (reachStation() && Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("miniGame");
+                serveFoodUI.SetActive(true);               
             }
-        } else
+        } 
+        else
         {
             workStationUI.SetActive(false);
         }
@@ -32,7 +36,7 @@ public class WorkStationUI : MonoBehaviour
 
     bool reachStation()
     {
-
+        //expand the bound box, so the UI can show up a bit earlier.
         Bounds expandBound = workStationPos.bounds;
         expandBound.Expand(reachStationOffset);
 
@@ -46,10 +50,6 @@ public class WorkStationUI : MonoBehaviour
 
     }
 
-    void MiniGame()
-    {
-        
-    }
 
 }
 
