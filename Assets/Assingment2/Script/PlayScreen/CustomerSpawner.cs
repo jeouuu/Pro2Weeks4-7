@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
+    //this script is for spawing the customers
 
     public GameObject customerPrefab;
 
@@ -17,6 +18,7 @@ public class CustomerSpawner : MonoBehaviour
    
     private void Start()
     {        
+        //add the seats sets in the inspector in the available seats
         customers = new List<GameObject>();
         availableSeats = new List<Vector2>();
         availableSeats.Add(seats[0]);
@@ -27,6 +29,7 @@ public class CustomerSpawner : MonoBehaviour
 
     private void Update()
     {
+        //when the player ui is active, start spawing customers.
         if (playUI.activeSelf)
         {
             SpawnCustomer();
@@ -36,9 +39,10 @@ public class CustomerSpawner : MonoBehaviour
 
     void SpawnCustomer()
     {
-        //if there's less than 4 customers AND there's available seats
-        while(customers.Count < 4 && availableSeats.Count>0)
+        //if there's less than 4 customers AND there's available seats, spawn a customer
+        if(customers.Count < 4 && availableSeats.Count>0)
         {
+            //pick a random seat from the available seat list, then remove it from the list to prevent more than 1 customer at the same seat
             Vector2 pickSeat = availableSeats[Random.Range(0, customers.Count)];    
             availableSeats.Remove(pickSeat);
 
@@ -46,20 +50,12 @@ public class CustomerSpawner : MonoBehaviour
             Customer script = newCustomer.GetComponent<Customer>();
             if (script != null) 
             { 
+                //assign the seat to the customer
                 script.AssignSeat(pickSeat);
             }
-            customers.Add(newCustomer);
-         
-            //if (script.removeCustomer)
-            //{   
-            //    Debug.Log("remve");
-            //    customers.Remove(newCustomer);
-            //}
-            
-
+            //add this new customer in the list, because there can only be 4 customers on screen
+            customers.Add(newCustomer);            
         }
         
     }
-
-
 }

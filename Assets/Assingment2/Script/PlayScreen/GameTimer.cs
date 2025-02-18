@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour
 {
+    //this script is for the game timer
+
     public Slider gameTimer;
     public float timerSpeed = 0.5f;
     public float t;
 
+    //reference to the 3 stages(UI)
     public GameObject startUI;
     public GameObject playUI;
     public GameObject endUI;
@@ -17,7 +20,7 @@ public class GameTimer : MonoBehaviour
     {
         //set it off at the begginning
         playUI.SetActive(false);
-
+        //make sure the timer start at 0
         gameTimer.value = gameTimer.minValue;
     }
 
@@ -54,6 +57,7 @@ public class GameTimer : MonoBehaviour
 
     void EndGame()
     {
+        //when the timer reach the max/end, game end and end ui on
         if(gameTimer.value == gameTimer.maxValue)
         {
             endUI.SetActive(true );

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WorkStationUI : MonoBehaviour
 {
+    //this scrip is for the work station ui pops up when player approach it
+
     public Transform ChefPos;
     public SpriteRenderer workStationPos;
     public GameObject workStationUI;
@@ -19,10 +21,12 @@ public class WorkStationUI : MonoBehaviour
 
     private void Update()
     {
+        //when player reach the work station, the ui pops up
         if (reachStation())
         {
             workStationUI.SetActive(true);
 
+            // when the ui pops up AND player press space the serve food ui turns on
             if (reachStation() && Input.GetKeyDown(KeyCode.Space))
             {
                 serveFoodUI.SetActive(true);               
@@ -30,6 +34,7 @@ public class WorkStationUI : MonoBehaviour
         } 
         else
         {
+            //else the serve food ui turns off
             workStationUI.SetActive(false);
         }
     }
@@ -40,6 +45,7 @@ public class WorkStationUI : MonoBehaviour
         Bounds expandBound = workStationPos.bounds;
         expandBound.Expand(reachStationOffset);
 
+        //if the chef position is in the bound, return true
         if (expandBound.Contains(ChefPos.position))
         {
             return true;
